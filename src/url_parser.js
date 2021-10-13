@@ -1,12 +1,10 @@
-const args = process.argv.slice(2);
+const url = process.argv.slice(2)[0];
 // https://www.usnews.com/education/best-global-universities/search?region=africa&subject=space-science&format=json
 // https://www.usnews.com/education/best-global-universities/search?region=africa&subject=space-science&enrollment-min=12648&format=json
-const url = args[0];
-
-// TODO numerical values breaks this
-const regexp = "([^?=&]+)(=([^&]*))?";
 
 const url_parser = (uri) => {
+  // TODO numerical values breaks this
+  const regexp = "([^?=&]+)(=([^&]*))?";  
   const decoded_uri = decodeURIComponent((uri+'').replace(/\+/g, '%20'));
   let obj = {};
 
@@ -39,7 +37,6 @@ const build_url_string = (uri_obj) => {
  
   return (url_string.slice(0,-1));
 }
-
 
 const return_params = (uri_obj) => {
   delete uri_obj['base_url'];

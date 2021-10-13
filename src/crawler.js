@@ -12,6 +12,7 @@ const {
 // AXIOS query string
 const url_obj = url_parser(url);
 const url_str = build_url_string(url_obj);
+
 // const { data } = axios.get(
 //   url_str
 // )
@@ -25,6 +26,7 @@ const url_str = build_url_string(url_obj);
 // AXIOS params
 const base_url = url_obj['base_url'];
 const param_obj = return_params(url_obj);
+
 const { data } = axios.get(
   base_url,
   {
