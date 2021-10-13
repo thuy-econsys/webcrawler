@@ -9,33 +9,23 @@ const {
   return_params 
 } = require('./url_parser');
 
-// AXIOS query string
-const url_obj = url_parser(url);
-const url_str = build_url_string(url_obj);
-
-// const { data } = axios.get(
-//   url_str
-// )
-// .then((response) => {
-//   console.log(response.data.items);
-// })
-// .catch((err) => {
-//   console.log(err);
-// });
-
 // AXIOS params
+const url_obj = url_parser(url);
 const base_url = url_obj['base_url'];
 const param_obj = return_params(url_obj);
 
-const { data } = axios.get(
-  base_url,
-  {
-    params: param_obj
-  }
-)
-.then((response) => {
-  console.log(response.data.items);
-})
-.catch((err) => {
-  console.log(err);
-});
+(async () => {
+  const resp = await axios.get(
+    base_url,
+    {
+      params: param_obj
+    }
+  )
+  .then((response) => {
+    console.log(response.data.items);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+})();
+
